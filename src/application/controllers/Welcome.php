@@ -21,23 +21,24 @@ class Welcome extends CI_Controller {
         require_once config_item('business-user_status-class');
     }
 
-    public function index_tmp($client = 1) {
-        $Client = new Client($client);
-        $Client->load_data();//die;
-        //var_dump($Client);
+    public function index($access_token, $client_id) {
+         $ClientDatas = (object) array(
+                        "ClientId" => $ClientModule->Id,
+                        "ClientEmail" => "josergm86@gmail.com",
+                        "ClientPhotoUrl" => $GLOBALS["sistem_config"]->DASHBOARD_SITE_URL . "../assets/profile_images/" . $ClientModule->Id . ".jpg",
+        );
+        $this->session->set_userdata('client_datas', serialize($ClientDatas));
         
+        $param["client_datas"] = json_encode($ClientDatas);
         $param["lateral_menu"] = $this->load->view('lateral_menu', '', TRUE);
-        $param["painel_person_profile"] = $this->load->view('client_views/person_profile_painel', '', TRUE);
-        $param["painel_reference_profiles"] = $this->load->view('client_views/reference_profiles_painel', '', TRUE);
-//        $this->load->view('visibility_home', $param);
-        $this->load->view('visibility_client', $param);
+        $param["modals"] = $this->load->view('modals', '', TRUE);
+        
+        //$this->load->view('posting_home', $param);
+        $this->load->view('posting_client', $param);
     }
 
-    public function aa() {
-        var_dump(unserialize($this->session->userdata('client')));
-    }
     
-    public function index($access_token, $client_id) {
+    public function index_old($access_token, $client_id) {
         //1. check correct access_token or active session
         if ($this->session->userdata('client_module')) {
             $ClientModule = unserialize($this->session->userdata('client_module'));
