@@ -52,9 +52,8 @@
 
         <script type="text/javascript">
             var base_url = "<?php echo base_url()?>";
-            var module = "visibility";
+            var module = "posting";
             var client_datas = <?php echo $client_datas;?>;
-            var person_profile = <?php echo $person_profile_datas;?>;         
         </script>
     </head>
 
@@ -71,7 +70,7 @@
                     <div class="col-md-8 align-self-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url()?>">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Mais visibilidade</li>
+                            <li class="breadcrumb-item active">Post-Stories</li>
                         </ol>
                     </div>
                 </div>
@@ -81,7 +80,7 @@
                         <!-- HEADER -->
                         <div class="card">
                             <div class="card-body">
-                                <h1>MÓDULO VISIBILIDADE</h1>
+                                <h1>POST-STORIES</h1>
                             </div>
                         </div>
                         
